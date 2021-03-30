@@ -1,29 +1,19 @@
+# Dockerfile
+
 FROM node
 
-# Install Packages
-WORKDIR /tmp
-COPY frontend/frontend/package*.json /tmp/
-RUN npm install
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-# Run npm install in a temp folder to prevent docker-compose bind mounting from overwriting with source node_modules folder. Copy from here later.
+COPY /frontend/frontend/package.json /usr/src/app
+# RUN npm cache clean
+RUN npm install 
 
-#Create Working Dir
-WORKDIR /frontend
-
-# CopyApp Source
-COPY frontend/ .
 
 # Move Packages to Working Dir
-RUN cp -a /tmp/node_modules /frontend/node_modules
+COPY /frontend/frontend/ /usr/src/app 
 
-# Expose Port
 EXPOSE 4200
 
+CMD [ "npm", "start" ]
 
-# Build node app
-# RUN npm run build
-
-# Start command (CMD[""] is the default command that will be run when the container is started)
-# npm start runs the script 'start' in our frontend's package.json file.
-# This is overwritten in our docker-compose.yml.
-CMD [ "npm", "start"]
