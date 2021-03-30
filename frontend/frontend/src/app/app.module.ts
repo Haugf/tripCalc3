@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { CalculatedOutputComponent } from './calculated-output/calculated-output.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalculatedOutputComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
