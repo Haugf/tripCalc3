@@ -1,0 +1,4 @@
+<div *ngIf="calculatedCosts$ | async as calculatedCosts">
+    <h1>{{ calculatedCosts }}</h1>
+    <button (click)="getAll()">Get All</button>
+</div>
