@@ -1,4 +1,92 @@
-<div *ngIf="calculatedCosts$ | async as calculatedCosts">
-    <h1>{{ calculatedCosts }}</h1>
-    <button (click)="getAll()">Get All</button>
-</div>
+<h1>Trip Calculator</h1>
+    <form (ngSubmit)="onSubmit(heroForm.value)" #heroForm="ngForm">
+    
+    <div class="camper-group">
+      <div class="form-group">
+          
+        <label for="camperOne_name">Name</label>
+        <input type="text" class="form-control" id="camperOne_name"
+               required
+               [(ngModel)]="model.camperOne_name" name="camperOne_name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="camperOne_total">Total Spent</label>
+        <input type="text" class="form-control" id="camperOne_total"
+               [(ngModel)]="model.camperOne_total" name="camperOne_total">
+      </div>
+    </div>
+
+    <div class="camper-group">
+        <div class="form-group">
+            
+          <label for="camperTwo_name">Name</label>
+          <input type="text" class="form-control" id="camperTwo_name"
+                 required
+                 [(ngModel)]="model.camperTwo_name" name="camperTwo_name"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="camperTwo_total">Total Spent</label>
+          <input type="text" class="form-control" id="camperTwo_total"
+                 [(ngModel)]="model.camperTwo_total" name="camperTwo_total">
+        </div>
+      </div>
+
+      <div class="camper-group">
+        <div class="form-group">
+            
+          <label for="camperThree_name">Name</label>
+          <input type="text" class="form-control" id="camperThree_name"
+                 required
+                 [(ngModel)]="model.camperThree_name" name="camperThree_name"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="camperThree_total">Total Spent</label>
+          <input type="text" class="form-control" id="camperThree_total"
+                 [(ngModel)]="model.camperThree_total" name="camperThree_total">
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+      <i>with</i> reset
+
+      &nbsp;&nbsp;
+      <i>without</i> reset
+
+      <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+          <div class="col-xs-3">{{ calculatedResponse.camperOne_name }}</div>
+          <div class="col-xs-9">{{ calculatedResponse.camperOne_owes }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">{{ calculatedResponse.camperTwo_name }}</div>
+          <div class="col-xs-9">{{ calculatedResponse.camperTwo_owes }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">{{ calculatedResponse.camperThree_name }}</div>
+          <div class="col-xs-9">{{ calculatedResponse.camperThree_owes }}</div>
+        </div>
+        <br>
+        <!-- <button class="btn btn-primary" (click)="submitted=false">Edit</button> -->
+      </div>
+
+    </form>

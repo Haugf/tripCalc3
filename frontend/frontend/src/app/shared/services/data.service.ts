@@ -22,24 +22,17 @@ export class DataService {
 
   getCalculatedCost(): Observable<{}> {
     return this.httpClient.get<any>(this.endpoint)
-      .pipe(
-        catchError(this.handleError<any>('getCalculatedCost',  ''))
-      )
   }
 
-  /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-private handleError<T>(operation = 'operation', result?: T) {
-  return (error: any) => {
-
-    // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
-
-
-  };
-}
+  getCalculatedCost2(data: any): Observable<{}> {
+    
+    return this.httpClient.get<any>(this.endpoint, {params: {
+      camperOne_name: data.camperOne_name,
+      camperOne_total: data.camperOne_total,
+      camperTwo_name: data.camperTwo_name,
+      camperTwo_total: data.camperTwo_total,
+      camperThree_name: data.camperThree_name,
+      camperThree_total: data.camperThree_total, 
+    }})
+  }
 }
