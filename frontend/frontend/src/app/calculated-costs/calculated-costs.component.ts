@@ -48,10 +48,7 @@ export class CalculatedCostsComponent implements OnInit {
     this.submitted = true;
     this.dataService.getCalculatedCost2(data).subscribe(
       res => {
-        // console.log(res);
-        
         this.calculatedResponse = res as Calculated
-          // this.grandTotal = data.grandTotal
           console.log(this.calculatedResponse);
           
       },

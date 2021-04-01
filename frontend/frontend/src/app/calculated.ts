@@ -1,6 +1,6 @@
 export class Calculated {
     constructor(
-        public grandTotal: number,
+        public splitTotal: number,
         public camperOne_name: string,
         public camperOne_owes: number,
         public camperTwo_name: string,

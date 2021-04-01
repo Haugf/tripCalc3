@@ -4,6 +4,8 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
+  
+
 
   let camperOne_name = req.query.camperOne_name
   let camperOne_total = parseFloat(req.query.camperOne_total)
@@ -16,14 +18,14 @@ router.get('/', function(req, res, next) {
 
   let grandTotal = camperOne_total + camperTwo_total + camperThree_total;
 
-  let splitTotal = grandTotal / 3;
+  let splitTotal = Math.round(100*(grandTotal / 3))/100;
 
-  let camperOne_owes = splitTotal - camperOne_total;
-  let camperTwo_owes = splitTotal - camperTwo_total;
-  let camperThree_owes = splitTotal - camperThree_total;
+  let camperOne_owes = Math.round(100*(splitTotal - camperOne_total))/100;
+  let camperTwo_owes = Math.round(100*(splitTotal - camperTwo_total))/100;
+  let camperThree_owes = Math.round(100*(splitTotal - camperThree_total))/100;
 
   res.status(200).send({
-  "grandTotal": grandTotal,
+  "splitTotal": splitTotal,
   "camperOne_name": camperOne_name,
   "camperOne_owes": camperOne_owes,
   "camperTwo_name": camperTwo_name,
