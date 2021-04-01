@@ -15,6 +15,7 @@ export class CalculatedCostsComponent implements OnInit {
   public calculatedCosts$?: Observable<{}>;
   
 
+  // Initial data thatt gets set on UI
   model = new Trip(18, 
     'Alice', 23.78,
     'Robert', 54.78,
@@ -23,7 +24,6 @@ export class CalculatedCostsComponent implements OnInit {
 
   submitted = false;
 
-  public pleaseWork: any;
   public submitMessage: any;
   
   public calculatedResponse = new Calculated(0, '', 0, '', 0, '', 0);
@@ -31,22 +31,14 @@ export class CalculatedCostsComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getAll();
-  }
 
-  getAll(): void {
-    this.dataService.getCalculatedCost().subscribe(
-      data => {},
-      err => {console.error(err)},
-      () => console.log("done calling API")
-    );
   }
   
   onSubmit(data: any) {
     console.log(data.camperThree_name);
 
     this.submitted = true;
-    this.dataService.getCalculatedCost2(data).subscribe(
+    this.dataService.getCalculatedCost(data).subscribe(
       res => {
         this.calculatedResponse = res as Calculated
           console.log(this.calculatedResponse);
@@ -60,7 +52,7 @@ export class CalculatedCostsComponent implements OnInit {
 
   showFormControls(form: any) {
     return form && form.controls.name &&
-    form.controls.name.value; // Dr. IQ
+    form.controls.name.value;
   }
 
 }

@@ -8,7 +8,6 @@ import { catchError, map, tap} from 'rxjs/operators';
 })
 export class DataService {
 
-  // private endpoint: string = 'https://api.jsonbin.io/b/6063990218592d461f039e2f/1'
   private endpoint: string = 'http://localhost:3000/calculate'
   private secretKey: string = ''
 
@@ -20,12 +19,7 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCalculatedCost(): Observable<{}> {
-    return this.httpClient.get<any>(this.endpoint)
-  }
-
-  getCalculatedCost2(data: any): Observable<{}> {
-    
+  getCalculatedCost(data: any): Observable<{}> {
     return this.httpClient.get<any>(this.endpoint, {params: {
       camperOne_name: data.camperOne_name,
       camperOne_total: data.camperOne_total,
@@ -35,4 +29,5 @@ export class DataService {
       camperThree_total: data.camperThree_total, 
     }})
   }
+  
 }
