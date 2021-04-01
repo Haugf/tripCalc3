@@ -3,10 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-
   
-
-
   let camperOne_name = req.query.camperOne_name
   let camperOne_total = parseFloat(req.query.camperOne_total)
   let camperTwo_name = req.query.camperTwo_name

@@ -9,7 +9,7 @@ import { catchError, map, tap} from 'rxjs/operators';
 export class DataService {
 
   // private endpoint: string = 'https://api.jsonbin.io/b/6063990218592d461f039e2f/1'
-  private endpoint: string = 'http://localhost:3000/users'
+  private endpoint: string = 'http://localhost:3000/calculate'
   private secretKey: string = ''
 
   private httpHeaders = {
