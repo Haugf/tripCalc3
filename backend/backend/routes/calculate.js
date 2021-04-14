@@ -1,11 +1,20 @@
 var express = require('express');
 var router = express.Router();
-const { query } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', [
+  check('camperOne_total', 'Enter a valid total').isFloat(),
+  check('camperTwo_total', 'Enter a valid total').isFloat(),
+  check('camperThree_total', 'Enter a valid total').isFloat()
+],function(req, res, next) {
 
   // TODO: Add validators
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
 
   let camperOne_name = req.query.camperOne_name
   let camperOne_total = parseFloat(req.query.camperOne_total)
