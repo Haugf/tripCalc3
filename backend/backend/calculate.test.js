@@ -9,6 +9,5 @@ describe('Get Calculated Cost Endpoint', () => {
         title: 'test is cool',
       })
     expect(res.statusCode).toEqual(422)
-    // expect(res.body).toHaveProperty('post')
   })
 })

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DataService } from '../shared/services/data.service';
-import { Trip } from '../trip';
+import { Trip, Trip2 } from '../trip';
 import { Calculated } from '../calculated'
 
 @Component({
@@ -16,6 +16,12 @@ export class CalculatedCostsComponent implements OnInit {
   
 
   // Initial data thatt gets set on UI
+
+  public new_model = [new Trip2('Alice', 23.78)]
+
+  
+  // model = new Trip('Alice', 23.78)
+  // mo4del = [new Trip('Alice', 23.78),2,3];
   model = new Trip(18, 
     'Alice', 23.78,
     'Robert', 54.78,

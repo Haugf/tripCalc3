@@ -1,3 +1,10 @@
+export class Trip2 {
+    constructor(
+        public camper_name: string,
+        public camper_total: number,
+    ) { }
+}
+
 export class Trip {
     constructor(
         public id: number,
