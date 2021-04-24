@@ -6,7 +6,7 @@
 
     <div *ngFor="let hero of new_model; let i=index;">
       ({{i}}) {{hero.camper_name}}
-      <app-trip-card></app-trip-card>
+      <app-trip-card [name]='hero.camper_name' [cost]='hero.camper_total'></app-trip-card>
     </div>
 
 
