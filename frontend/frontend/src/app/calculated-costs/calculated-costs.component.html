@@ -4,6 +4,12 @@
     <form (ngSubmit)="onSubmit(heroForm.value)" #heroForm="ngForm">
     <!-- <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>  -->
 
+    <div *ngFor="let hero of new_model; let i=index;">
+      ({{i}}) {{hero.camper_name}}
+      <app-trip-card [name]='hero.camper_name' [cost]='hero.camper_total'></app-trip-card>
+    </div>
+
+
     <div class="col-md-4 col-s-12 card">
       <div class="form-group">
           

@@ -1,0 +1,7 @@
+Trip Calc Updated
+
+
+1. Change Data Structure to an array x 
+2. change how to data gets initialized x
+3. work on a UI element for changing the number of students
+4. change this to handle a dynamic amount of students
